@@ -1,0 +1,173 @@
+<!-- $Id$ -->
+<!--
+  ZF Navy free balloon 3d model.
+
+  Copyright (C) 2007  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license.
+
+  The pilot model pilot-b.ac is from Detlef Faber's F4U.
+
+-->
+<PropertyList>
+
+ <path>pilot-b.ac</path>
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.0   </x-m>
+  <y-m> 0.0   </y-m>
+  <z-m> 0.965 </z-m>
+ </offsets>
+
+ <!-- head -->
+ <animation>
+  <type>rotate</type>
+  <object-name>head</object-name>
+  <property>surface-positions/rudder-pos-norm</property>
+  <factor>-75</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>0.02</x-m>
+   <y-m>0.00</y-m>
+   <z-m>0.00</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>head</object-name>
+  <property>surface-positions/elevator-pos-norm</property>
+  <factor>-40</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>0.05</x-m>
+   <y-m>0.00</y-m>
+   <z-m>0.60</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <!-- Right arm -->
+ <animation> <!-- Right shoulder: side -->
+  <type>rotate</type>
+  <object-name>arm1.R</object-name>
+  <object-name>arm2.R</object-name>
+  <object-name>hand.R</object-name>
+  <property>controls/engines/engine[1]/throttle</property>
+  <factor>155</factor>
+  <offset-deg>-89</offset-deg>
+  <center>
+   <x-m>0.00</x-m>
+   <y-m>0.25</y-m>
+   <z-m>0.46</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ <animation> <!-- Right shoulder: forward/back -->
+  <type>rotate</type>
+  <object-name>arm1.R</object-name>
+  <object-name>arm2.R</object-name>
+  <object-name>hand.R</object-name>
+  <property>controls/engines/engine[0]/throttle</property>
+  <factor>180</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>0.00</x-m>
+   <y-m>0.25</y-m>
+   <z-m>0.46</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+ <animation> <!-- Right shoulder: rotate -->
+  <type>rotate</type>
+  <object-name>arm1.R</object-name>
+  <object-name>arm2.R</object-name>
+  <object-name>hand.R</object-name>
+  <property>controls/engines/engine[2]/throttle</property>
+  <factor>180</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>0.01</x-m>
+   <y-m>0.25</y-m>
+   <z-m>0.445</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation> <!-- Right elbow -->
+  <type>rotate</type>
+  <object-name>arm2.R</object-name>
+  <object-name>hand.R</object-name>
+  <property>controls/engines/engine[3]/throttle</property>
+  <factor>120</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>0.00</x-m>
+   <y-m>0.54</y-m>
+   <z-m>0.455</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <!-- Left arm -->
+ <animation>
+  <type>rotate</type>
+  <object-name>arm1.L</object-name>
+  <object-name>arm2.L</object-name>
+  <object-name>hand.L</object-name>
+  <property>constants/zero</property>
+  <offset-deg>85</offset-deg>
+  <center>
+   <x-m>0.08</x-m>
+   <y-m>-0.22</y-m>
+   <z-m>0.45</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.2</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>arm2.L</object-name>
+  <object-name>hand.L</object-name>
+  <property>constants/zero</property>
+  <factor>0</factor>
+  <center>
+   <x-m>0.007</x-m>
+   <y-m>-0.533</y-m>
+   <z-m>0.455</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>-0.5</y>
+   <z>-1.0</z>
+  </axis>
+ </animation>
+
+</PropertyList>

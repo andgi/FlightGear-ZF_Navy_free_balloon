@@ -1,0 +1,93 @@
+<!-- $Id$ -->
+<!--
+  ZF Navy free balloon 3d instrument box.
+
+  Copyright (C) 2006  Anders Gidenstam  (anders@gidenstam.org)
+  This file is licensed under the GPL license.
+-->
+<PropertyList>
+
+ <path>instrument_box.ac</path>
+
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.0 </x-m>
+  <y-m> 0.0 </y-m>
+  <z-m> 0.0 </z-m>
+ </offsets>
+
+ <!-- 3d instruments -->
+
+ <model>
+  <name>Clock</name>
+  <path>Aircraft/Instruments-3d/clock/clock.xml</path>
+  <offsets>
+   <heading-deg>90</heading-deg>
+   <x-m>  0.1 </x-m>
+   <y-m>  0.0501 </y-m>
+   <z-m>  0.05 </z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Altimeter</name>
+  <path>Aircraft/Instruments-3d/alt/alt.xml</path>
+  <offsets>
+   <heading-deg>90</heading-deg>
+   <x-m> -0.1 </x-m>
+   <y-m>  0.0501 </y-m>
+   <z-m>  0.05 </z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>VSI</name>
+  <path>Aircraft/Instruments-3d/vsi/vsi.xml</path>
+  <offsets>
+   <heading-deg>90</heading-deg>
+   <x-m>  0.0 </x-m>
+   <y-m>  0.0501 </y-m>
+   <z-m>  0.05 </z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Radio</name>
+  <path>Aircraft/Instruments-3d/ky196/ky196-comm1.xml</path>
+  <offsets>
+   <heading-deg>90</heading-deg>
+   <x-m>   0.0  </x-m>
+   <y-m>   0.05 </y-m>
+   <z-m>  -0.05 </z-m>
+  </offsets>
+ </model>
+
+ <panel>
+   <path>Aircraft/ZF_Navy_free_balloon/Models/instrument_box_panel.xml</path>
+   <bottom-left>
+    <x-m>  0.15 </x-m>
+    <y-m>  0.05 </y-m>
+    <z-m> -0.10 </z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m> -0.15 </x-m>
+    <y-m>  0.05 </y-m>
+    <z-m> -0.10 </z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>  0.15 </x-m>
+    <y-m>  0.05 </y-m>
+    <z-m>  0.10 </z-m>
+   </top-left>
+ </panel>
+
+ <!-- LOD for the model as a whole -->
+<!--
+ <animation>
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>10000</max-m>
+ </animation>
+-->
+
+</PropertyList>

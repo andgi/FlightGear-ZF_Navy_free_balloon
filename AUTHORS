@@ -1,0 +1,14 @@
+Anders Gidenstam  (anders(at)gidenstam.org)
+  - ZF Navy free balloon FlightGear configuration
+  - ZF Navy free balloon Flight Dynamics Model Configuration
+  - ZF Navy free balloon 3d model
+
+The model borrows content from the following authors' contributions
+to FlightGear:
+
+Detlef Faber
+  - Pilot 3d model. (From FlightGear/Aircraft/F4U/)
+
+Syd Adams
+  - Radio panel. (From FlightGear/Aircraft/Instruments-3d/ky196/)
+  - Template for the Nasal electrical system.

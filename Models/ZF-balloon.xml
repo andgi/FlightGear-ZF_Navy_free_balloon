@@ -1,0 +1,139 @@
+<!-- $Id$ -->
+<!--
+  ZF Navy free balloon 3d model.
+
+  Copyright (C) 2006 - 2007  Anders Gidenstam  (anders@gidenstam.org)
+  This file is licensed under the GPL license.
+-->
+<PropertyList>
+
+ <path>ZF.ac</path>
+
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.00 </x-m>
+  <y-m> 0.00 </y-m>
+  <z-m> 9.57 </z-m>
+ </offsets>
+
+ <!-- 3d instruments -->
+
+ <model>
+  <name>Instruments</name>
+  <path>Aircraft/ZF_Navy_free_balloon/Models/instrument_box.xml</path>
+  <offsets>
+   <x-m>   0.00 </x-m>
+   <y-m>  -0.35 </y-m>
+   <z-m> -13.50 </z-m>
+   <roll-deg> -15.0 </roll-deg>
+  </offsets>
+ </model>
+
+ <!-- Crew -->
+ <model>
+  <name>Pilot</name>
+  <path>Aircraft/ZF_Navy_free_balloon/Models/pilot.xml</path>
+  <offsets>
+   <heading-deg>20</heading-deg>
+   <x-m>   0.40 </x-m>
+   <y-m>   0.30 </y-m>
+   <z-m> -15.515 </z-m>
+  </offsets>
+ </model>
+
+ <animation>
+  <type>select</type>
+  <object-name>Pilot</object-name>
+  <condition>
+   <not>
+    <equals>
+     <property>sim/current-view/view-number</property>
+     <value>0</value>
+    </equals>
+   </not>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>scale</type>
+  <object-name>envelope_lower</object-name>
+  <property>sim/multiplay/generic/float[0]</property>
+  <x-factor>0.0</x-factor>
+  <x-offset>1.0</x-offset>  
+  <y-factor>0.0</y-factor>
+  <y-offset>1.0</y-offset>  
+  <z-factor>1.0</z-factor>
+  <center>
+   <x-m>   0.00 </x-m>
+   <y-m>   0.00 </y-m>
+   <z-m>   0.00 </z-m>
+  </center>
+ </animation>
+ <animation>
+  <type>scale</type>
+  <object-name>envelope_upper</object-name>
+  <property>sim/multiplay/generic/float[1]</property>
+  <x-factor>0.0</x-factor>
+  <x-offset>1.0</x-offset>  
+  <y-factor>0.0</y-factor>
+  <y-offset>1.0</y-offset>  
+  <z-factor>1.0</z-factor>
+  <center>
+   <x-m>   0.00 </x-m>
+   <y-m>   0.00 </y-m>
+   <z-m>   0.00 </z-m>
+  </center>
+ </animation>
+ <animation>
+  <type>scale</type>
+  <object-name>envelope_upper</object-name>
+  <object-name>envelope_lower</object-name>
+  <object-name>foot_ropes</object-name>
+  <property>sim/multiplay/generic/float[2]</property>
+  <x-factor>1.0</x-factor>
+  <y-factor>1.0</y-factor>
+  <z-factor>0.0</z-factor>
+  <z-offset>1.0</z-offset>
+  <center>
+   <x-m>   0.00 </x-m>
+   <y-m>   0.00 </y-m>
+   <z-m>   0.00 </z-m>
+  </center>
+ </animation>
+ <animation>
+  <type>translate</type>
+  <object-name>appendix</object-name>
+  <property>sim/multiplay/generic/float[0]</property>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+  <factor>-6.185</factor>
+  <offset-m>6.185</offset-m>  
+ </animation>
+ <animation>
+  <type>scale</type>
+  <object-name>foot_ropes</object-name>
+  <property>sim/multiplay/generic/float[0]</property>
+  <x-factor>-0.05</x-factor>
+  <x-offset>1.05</x-offset>  
+  <y-factor>-0.05</y-factor>
+  <y-offset>1.05</y-offset>  
+  <z-factor>-0.3</z-factor>
+  <z-offset>1.3</z-offset>  
+  <center>
+   <x-m>   0.00 </x-m>
+   <y-m>   0.00 </y-m>
+   <z-m> -13.20 </z-m>
+  </center>
+ </animation>
+
+ <!-- LOD for the model as a whole -->
+ <animation>
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>15000</max-m>
+ </animation>
+
+</PropertyList>

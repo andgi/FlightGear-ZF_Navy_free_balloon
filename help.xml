@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<!--
+  ZR Navy free gas balloon model for FlightGear.
+
+  Copyright (C) 2006 - 2007  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license.
+-->
+<PropertyList>
+
+ <!-- Specific keys -->
+ <title>ZF Navy free balloon</title>
+ <key>
+  <name>F</name>
+  <desc>Open gas valve.</desc>
+ </key>
+ <key>
+  <name>f</name>
+  <desc>Close gas valve.</desc>
+ </key>
+ <key>
+  <name>d</name>
+  <desc>Drop ballast in 0.1% decrements.</desc>
+ </key>
+ <key>
+  <name>D</name>
+  <desc>Drop ballast in 1% decrements.</desc>
+ </key>
+ <key>
+  <name>W</name>
+  <desc>Weigh-off to 10% of current weight by dropping ballast. (Takes about 10 seconds and only works on ground.)</desc>
+ </key>
+ <key>
+  <name>w</name>
+  <desc>Show current on-ground weight.</desc>
+ </key>
+ <key>
+  <name>M</name>
+  <desc>Gain ballast in 1% increments. (Magic)</desc>
+ </key>
+ <!-- Handling instructions. -->
+ <line>Take-off</line>
+ <line></line>
+ <line>1. Weigh-off (W) once or twice.</line>
+ <line>2. Drop ballast until the balloon starts ascending.</line>
+ <line></line>
+ <line></line>
+ <line>Levelling off</line>
+ <line></line>
+ <line>1. Carefully valve off gas until rate off ascent starts to decrease.</line>
+ <line>2. When the balloon starts to descend drop ballast.</line>
+ <line>3. Never let the balloon gain too much momentum in either direction.</line>
+
+</PropertyList>

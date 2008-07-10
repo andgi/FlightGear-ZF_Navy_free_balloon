@@ -1,0 +1,28 @@
+<!-- $Id$ -->
+<!--
+  ZF Navy free balloon 3d instrument box.
+
+  Copyright (C) 2006  Anders Gidenstam  (anders@gidenstam.org)
+  This file is licensed under the GPL license.
+-->
+<PropertyList>
+
+ <name>Box Panel</name>
+ <background>Aircraft/ZF_Navy_free_balloon/Models/transparent-bg.rgb</background>
+ <w>300</w>
+ <h>200</h>
+
+ <instruments>
+
+  <instrument include="../../Instruments-3d/ky196/ky196-comm1-hotspots.xml">
+    <name>Comm1 hotspots</name>
+    <x>147</x>
+    <y>50</y>
+    <w>160</w>
+    <h>35</h>
+  </instrument>
+
+ </instruments>
+
+</PropertyList>
+

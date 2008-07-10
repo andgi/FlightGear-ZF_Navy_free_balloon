@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<!--
+  ZR Navy free gas balloon model for FlightGear.
+
+  Copyright (C) 2006 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <sim>
+
+  <description>ZF Navy free gas balloon</description>
+  <author>Anders Gidenstam</author>
+  <status>experimental</status>
+  <aircraft-version>0.1</aircraft-version>
+
+  <flight-model>jsb</flight-model>
+  <aero>ZF_Navy_free_balloon</aero>
+
+  <presets>
+   <onground>true</onground>
+  </presets>
+
+  <sound>
+   <audible>false</audible>
+   <path/>
+  </sound>
+
+  <model>
+   <path>Aircraft/ZF_Navy_free_balloon/Models/ZF-balloon.xml</path>
+  </model>
+
+  <systems>
+
+   <electrical>
+    <path/>
+   </electrical>
+
+   <static>
+    <name>static</name>
+    <number>0</number>
+    <tau>1</tau>
+   </static>
+
+  </systems>
+  <instrumentation>
+   <path>Aircraft/ZF_Navy_free_balloon/Systems/instrumentation.xml</path>
+  </instrumentation>
+
+  <view n="0">
+   <internal archive="y">true</internal>
+   <config>
+    <!-- x/y/z == right/up/back -->
+    <x-offset-m archive="y">0.3</x-offset-m>
+    <y-offset-m archive="y">-4.20</y-offset-m>
+    <z-offset-m archive="y">0.40</z-offset-m>
+    <pitch-offset-deg>-5</pitch-offset-deg>
+    <limits>
+     <enabled type="bool">false</enabled>
+    </limits>
+    <!-- default-field-of-view-deg>60</default-field-of-view-deg -->
+   </config>
+  </view>
+
+  <chase-distance-m type="double" archive="y">-50.0</chase-distance-m>
+
+  <!-- Aircraft specific help. -->
+  <help include="help.xml"/>
+
+  <multiplay>
+   <!-- /fdm/jsbsim/fcs/envelope-lower-radius-norm -->
+   <generic>
+    <float n="0" type="float"> 1.0 </float>
+    <float n="1" type="float"> 1.0 </float>
+    <float n="2" type="float"> 1.0 </float>
+   </generic>
+  </multiplay>
+
+ </sim>
+
+ <nasal>
+  <ZF>
+   <script>
+    var weight_on_gear =
+      props.globals.getNode("/fdm/jsbsim/forces/fbz-gear-lbs");
+    var ballast   = "/fdm/jsbsim/inertia/pointmass-weight-lbs[0]";
+    var gas_valve = "/fdm/jsbsim/fcs/gas-valve-cmd-norm";
+    var rip_panel = "/fdm/jsbsim/fcs/rip-cmd-norm";
+    var ripped    = 0;
+
+    var print_wow = func {
+      gui.popupTip("Current weight on gear " ~
+                   weight_on_gear.getValue() ~ ".");
+    }
+
+    var weighoff = func {
+      gui.popupTip("Weigh-off to 10% in progress. " ~
+                   "Current weight " ~ weight_on_gear.getValue() ~ ".");
+      var wow = weight_on_gear.getValue();
+      var cont = getprop(ballast);
+      interpolate(ballast,
+                  cont + 0.90 * wow,
+                  10);
+    }
+
+    # For experimental solar radiation heating.
+    var loopid = 0;
+    var loop = func (id) {
+      if (id != loopid) return;
+      setprop("/fdm/jsbsim/fcs/sun-angle-rad",
+              getprop("/sim/time/sun-angle-rad"));
+      settimer(func { loop(id); }, 0.72);
+    }
+
+    setlistener("/sim/signal/fdm-initialized", func {
+      loopid += 1;
+      settimer(func { loop(loopid); }, 0.72);
+    });
+   </script>
+  </ZF>
+  <Instruments>
+   <file>Aircraft/ZF_Navy_free_balloon/Systems/electrical.nas</file>
+   <file>Aircraft/Instruments-3d/ky196/KY196.nas</file>
+  </Instruments>
+ </nasal>
+
+ <input>
+  <keyboard>
+   <!-- Keyboard commands -->
+   <key n="68">
+    <name>D</name>
+    <desc>Drop 1% ballast</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       gui.popupTip("Dropping ballast!");
+       setprop(ZF.ballast, 0.99 * getprop(ZF.ballast));
+     </script>
+    </binding>
+   </key>
+   <key n="77">
+    <name>M</name>
+    <desc>Gain ballast</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       gui.popupTip("Gaining ballast! (Cheater! ;)");
+       setprop(ZF.ballast, 1.01 * getprop(ZF.ballast));
+     </script>
+    </binding>
+   </key>
+   <key n="100">
+    <name>d</name>
+    <desc>Drop 0.1% ballast</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       gui.popupTip("Dropping ballast!");
+       setprop(ZF.ballast, 0.999 * getprop(ZF.ballast));
+     </script>
+    </binding>
+   </key>
+   <key n="70">
+    <name>F</name>
+    <desc>Open gas valve.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       gui.popupTip("Gas valve open!");
+       setprop(ZF.gas_valve, 1.00);
+     </script>
+    </binding>
+   </key>
+   <key n="102">
+    <name>f</name>
+    <desc>Close gas valve.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       gui.popupTip("Gas valve closed!");
+       setprop(ZF.gas_valve, 0.00);
+     </script>
+    </binding>
+   </key>
+   <key n="82">
+    <name>R</name>
+    <desc>Rip envelope</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       gui.popupTip("Enveloped ripped!");
+       ZF.ripped = 1;
+       setprop(ZF.rip_panel, 50.00);
+     </script>
+    </binding>
+   </key>
+
+   <key n="87"> 
+    <name>W</name>
+    <desc>Perform on-ground weigh-off.</desc>
+    <binding> 
+     <command>nasal</command>
+     <script>
+      ZF.weighoff();
+     </script>     
+    </binding>
+   </key>
+
+   <key n="119"> 
+    <name>w</name>
+    <desc>Show current on-ground weight.</desc>
+    <binding> 
+     <command>nasal</command>
+     <script>
+      ZF.print_wow();
+     </script>     
+    </binding>
+   </key>
+
+  </keyboard>
+ </input>
+
+</PropertyList>
