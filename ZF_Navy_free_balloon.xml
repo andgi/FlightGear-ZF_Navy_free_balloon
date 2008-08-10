@@ -549,8 +549,122 @@
  </flight_control>
 
  <!--
+ ==== External reactions ====================================================
+ -->
+
+ <external_reactions>
+
+  <force name="added-mass-bx" frame="BODY">
+   <location unit="M">
+    <x>  0.0 </x>
+    <y>  0.0 </y>
+    <z>  0.0 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="added-mass-by" frame="BODY">
+   <location unit="M">
+    <x>  0.0 </x>
+    <y>  0.0 </y>
+    <z>  0.0 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y> 1.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="added-mass-bz" frame="BODY">
+   <location unit="M">
+    <x>  0.0 </x>
+    <y>  0.0 </y>
+    <z>  0.0 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z> 1.0 </z>
+   </direction>
+  </force>
+
+  <force name="added-mass-pitch[0]" frame="BODY">
+   <location unit="M">
+    <x>  0.0 </x>
+    <y>  0.0 </y>
+    <z> -0.3048 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="added-mass-pitch[1]" frame="BODY">
+   <location unit="M">
+    <x>  0.0 </x>
+    <y>  0.0 </y>
+    <z>  0.3048 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+
+  <force name="added-mass-yaw[0]" frame="BODY">
+   <location unit="M">
+    <x>  0.0 </x>
+    <y> -0.3048 </y>
+    <z>  0.0 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="added-mass-yaw[1]" frame="BODY">
+   <location unit="M">
+    <x>  0.0 </x>
+    <y>  0.3048 </y>
+    <z>  0.0 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+
+ </external_reactions>
+
+ <!--
  === Aerodynamics ===========================================================
  -->
+ <system name="constants">
+
+  <!-- Aerodynamic constants. -->
+  <property value="20.29"> aero/constants/length-ft </property>
+  <property value="20.29"> aero/constants/diameter-ft </property>
+  <property value="823.37"> aero/constants/length-diameter-ft2 </property>
+  <property value="35000.00"> aero/constants/volume-ft3 </property>
+  <property value="1069.99"> aero/constants/volume-ft3_2_3 </property>
+
+  <!-- Added mass constants. -->
+  <property value="-0.50"> aero/constants/added-mass/k-axial </property>
+  <property value="-0.50"> aero/constants/added-mass/k-traverse </property>
+  <property value="-0.00"> aero/constants/added-mass/k-rotational </property>
+  <property value="1.00"> aero/constants/added-mass/tweak-factor </property>
+
+ </system>
+
+ <system file="airship_added_mass"/>
+
  <aerodynamics>
   <!-- Wild guess: D = K A q_inf -->
   <!-- A = cross sectional area (120.2m^2); -->
@@ -611,6 +725,7 @@
   </axis>
 
  </aerodynamics>
+
 <!--
  <output name="datalog.csv" type="CSV" rate="1">
   <rates> ON </rates>
