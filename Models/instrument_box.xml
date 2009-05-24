@@ -2,7 +2,7 @@
 <!--
   ZF Navy free balloon 3d instrument box.
 
-  Copyright (C) 2006  Anders Gidenstam  (anders@gidenstam.org)
+  Copyright (C) 2006 - 2009  Anders Gidenstam  (anders@gidenstam.org)
   This file is licensed under the GPL license.
 -->
 <PropertyList>
@@ -61,25 +61,6 @@
    <z-m>  -0.05 </z-m>
   </offsets>
  </model>
-
- <panel>
-   <path>Aircraft/ZF_Navy_free_balloon/Models/instrument_box_panel.xml</path>
-   <bottom-left>
-    <x-m>  0.15 </x-m>
-    <y-m>  0.05 </y-m>
-    <z-m> -0.10 </z-m>
-   </bottom-left>
-   <bottom-right>
-    <x-m> -0.15 </x-m>
-    <y-m>  0.05 </y-m>
-    <z-m> -0.10 </z-m>
-   </bottom-right>
-   <top-left>
-    <x-m>  0.15 </x-m>
-    <y-m>  0.05 </y-m>
-    <z-m>  0.10 </z-m>
-   </top-left>
- </panel>
 
  <!-- LOD for the model as a whole -->
 <!--

@@ -3,14 +3,14 @@
 <!--
   ZR Navy free gas balloon model for FlightGear.
 
-  Copyright (C) 2006 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2006 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
 
  <sim>
 
-  <description>ZF Navy free gas balloon</description>
+  <description>US Navy ZF free gas balloon</description>
   <author>Anders Gidenstam</author>
   <status>experimental</status>
   <aircraft-version>0.1</aircraft-version>
@@ -52,14 +52,13 @@
    <internal archive="y">true</internal>
    <config>
     <!-- x/y/z == right/up/back -->
-    <x-offset-m archive="y">0.3</x-offset-m>
-    <y-offset-m archive="y">-4.20</y-offset-m>
-    <z-offset-m archive="y">0.40</z-offset-m>
-    <pitch-offset-deg>-5</pitch-offset-deg>
+    <x-offset-m type="double" archive="y">0.3</x-offset-m>
+    <y-offset-m type="double" archive="y">-4.20</y-offset-m>
+    <z-offset-m type="double" archive="y">0.40</z-offset-m>
+    <pitch-offset-deg type="double">-5</pitch-offset-deg>
     <limits>
      <enabled type="bool">false</enabled>
     </limits>
-    <!-- default-field-of-view-deg>60</default-field-of-view-deg -->
    </config>
   </view>
 
@@ -108,7 +107,7 @@
     var loopid = 0;
     var loop = func (id) {
       if (id != loopid) return;
-      setprop("/fdm/jsbsim/fcs/sun-angle-rad",
+      setprop("/fdm/jsbsim/environment/sun-angle-rad",
               getprop("/sim/time/sun-angle-rad"));
       settimer(func { loop(id); }, 0.72);
     }

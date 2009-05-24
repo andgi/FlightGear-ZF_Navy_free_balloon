@@ -26,14 +26,32 @@
  xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 
  <fileheader>
-  <author> Anders Gidenstam </author>
+
+  <description>Free-flying gas balloon of the type ZF Navy free balloon.</description>
+
+  <author>Anders Gidenstam</author>
+  <email>anders at gidenstam dot org</email>
+
   <filecreationdate> 2006-03-24 </filecreationdate>
-  <version>
-   $Id$
-  </version>
-  <description>
-   JSBSim model for a free-flying gas balloon of the type ZF Navy free balloon.
-  </description>
+  <version>$Id$</version>
+
+  <license>
+   <licenseName>GPL</licenseName>
+   <licenseURL>http://www.gnu.org/licenses/gpl.html</licenseURL>
+  </license>
+  <note>
+   This model was created using publicly available data, publicly available
+   technical reports, textbooks, and guesses. It contains no proprietary or
+   restricted data. It has been validated only to the extent that it may seem
+   to "fly right", and possibly to comply to published, publicly known, 
+   performance data (maximum speed, endurance, etc.).
+
+   This model is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+  </note>
+
  </fileheader>
 
  <!--
@@ -172,27 +190,25 @@
  </mass_balance>
 
  <!--
- ==== External properties ===================================================
- -->
- <system name="External properties">
-  <!-- Set from Nasal. -->
-  <property> fcs/sun-angle-rad </property>
-  <property> fcs/sun-radiation-norm </property>
- </system>
-
- <!--
  === Gas cell ===============================================================
  -->
- <system name="Gas cell constants">
+
+ <buoyant_forces>
+
+  <!--External environment properties -->
+  <!-- Set from Nasal. -->
+  <property> environment/sun-angle-rad </property>
+  <property> environment/sun-radiation-norm </property>
+
+  <!-- Gas cell constants -->
+
   <!-- Conductivity [lb / (K ft sec)] (Guess) -->
   <property value="0.05"> buoyant_forces/heat-coeffs/conductivity </property>
   <!-- Emissivity [0,1] (Guess) -->
   <property value="0.05"> buoyant_forces/heat-coeffs/emissivity </property>
 
-  <!-- These should preferably have been exported by the gas_cell class. -->
+  <!-- This should preferably have been exported by the gas_cell class. -->
   <property value="20.29"> buoyant_forces/gas-cell[0]/max-radius-ft </property>
- </system>
- <buoyant_forces>
 
   <gas_cell type="HYDROGEN">
    <location unit="M">
@@ -246,12 +262,12 @@
       <value>   120.18 </value> <!-- Estimated projected surface area [m2] -->
       <value>  1300.00 </value> <!-- Solar energy flow [W/m2] -->
       <value>     0.03 </value> <!-- Guess -->
-      <property> fcs/sun-radiation-norm </property>
+      <property> environment/sun-radiation-norm </property>
       <max>
        <value> 0.0 </value>
        <difference>
         <value> 1.5708 </value>
-        <property> fcs/sun-angle-rad </property>
+        <property> environment/sun-angle-rad </property>
        </difference>
       </max>
      </product>
