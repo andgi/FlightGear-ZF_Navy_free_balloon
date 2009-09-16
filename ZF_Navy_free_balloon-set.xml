@@ -120,8 +120,7 @@
   </ZF>
   <Instruments>
    <file>Aircraft/ZF_Navy_free_balloon/Systems/electrical.nas</file>
-   <file>Aircraft/Instruments-3d/ky196/KY196.nas</file>
-  </Instruments>
+   </Instruments>
  </nasal>
 
  <input>
