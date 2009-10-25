@@ -1,8 +1,8 @@
 AC3Db
-MATERIAL "envelope" rgb 0.5 0.5 0.5 amb 0.5 0.5 0.5 emis 0 0 0 spec 0.9 0.9 0.9 shi 32 trans 0
-MATERIAL "DefaultWhite" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 0.5 0.5 0.5 shi 64 trans 0
-MATERIAL "rope" rgb 0.8 0.8 0.8 amb 0.8 0.8 0.8 emis 0 0 0 spec 1 1 1 shi 32 trans 0
-MATERIAL "Black" rgb 0 0 0 amb 0 0 0 emis 0 0 0 spec 1 1 1 shi 32 trans 0
+MATERIAL "envelope" rgb 0.6 0.6 0.6 amb 0.6 0.6 0.6 emis 0 0 0 spec 0.0 0.0 0.0 shi 16 trans 0
+MATERIAL "DefaultWhite" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 0.01 0.01 0.01 shi 64 trans 0
+MATERIAL "rope" rgb 0.5 0.5 0.5 amb 0.5 0.5 0.5 emis 0 0 0 spec 0 0 0  shi 32 trans 0
+MATERIAL "Black" rgb 0 0 0 amb 0 0 0 emis 0 0 0 spec 0.1 0.1 0.1 shi 32 trans 0
 OBJECT world
 kids 7
 OBJECT poly
