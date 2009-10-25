@@ -2,8 +2,8 @@
 <!--
   ZF Navy free balloon 3d instrument box.
 
-  Copyright (C) 2006 - 2009  Anders Gidenstam  (anders@gidenstam.org)
-  This file is licensed under the GPL license.
+  Copyright (C) 2006 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
 
@@ -48,17 +48,6 @@
    <x-m>  0.0 </x-m>
    <y-m>  0.0501 </y-m>
    <z-m>  0.05 </z-m>
-  </offsets>
- </model>
-
- <model>
-  <name>Radio</name>
-  <path>Aircraft/Instruments-3d/ky196/ky196-comm1.xml</path>
-  <offsets>
-   <heading-deg>90</heading-deg>
-   <x-m>   0.0  </x-m>
-   <y-m>   0.05 </y-m>
-   <z-m>  -0.05 </z-m>
   </offsets>
  </model>
 

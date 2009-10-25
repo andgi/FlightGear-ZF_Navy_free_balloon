@@ -1,10 +1,10 @@
 ###############################################################################
 ## $Id$
 ##
-## Submarine Scout class airship.
+## ZF Navy free balloon.
 ##
-##  Copyright (C) 2007  Anders Gidenstam  (anders(at)gidenstam.org)
-##  This file is licensed under the GPL license.
+##  Copyright (C) 2007 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
+##  This file is licensed under the GPL license version 2 or later.
 ##
 ###############################################################################
 
@@ -16,8 +16,6 @@ setlistener("/sim/signals/fdm-initialized", func {
     battery = BatteryClass.new();
     setprop("/controls/electric/battery-switch", 1.0);
     setprop("/controls/electric/external-power", 0);
-    setprop("/controls/electric/engine[0]/generator", 0);
-    setprop("/controls/switches/inverter", 0);
     setprop("/controls/switches/nav-lights", 0);
     setprop("/controls/switches/beacon", 0);
     setprop("/controls/switches/strobe", 0);

@@ -3,7 +3,7 @@
 <!--
   ZF Navy free balloon flight model for JSBSim.
 
-    Copyright (C) 2006 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2006 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -152,6 +152,22 @@
    </location>
    <weight unit="KG"> 900.0 </weight>
   </pointmass>
+  <pointmass name="Pilot">
+   <weight unit="KG"> 85.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x> -0.5 </x>
+    <y>  0.5 </y>
+    <z>  1.0 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Payload">
+   <weight unit="KG"> 0.0 </weight>
+   <location name="POINTMASS" unit="M">
+    <x> -0.5 </x>
+    <y>  0.5 </y>
+    <z>  1.0 </z>
+   </location>
+  </pointmass>
 
   <pointmass name="Basket">
    <weight unit="KG"> 64.864 </weight>
@@ -178,15 +194,6 @@
    </location>
   </pointmass>
 
-  <pointmass name="Pilot">
-   <weight unit="KG"> 80 </weight>
-   <location name="POINTMASS" unit="M">
-    <x> -0.5 </x>
-    <y>  0.5 </y>
-    <z>  1.0 </z>
-   </location>
-  </pointmass>
-
  </mass_balance>
 
  <!--
@@ -195,7 +202,7 @@
 
  <buoyant_forces>
 
-  <!--External environment properties -->
+  <!-- External environment properties -->
   <!-- Set from Nasal. -->
   <property> environment/sun-angle-rad </property>
   <property> environment/sun-radiation-norm </property>
@@ -222,7 +229,7 @@
    <fullness> 1.0 </fullness>
    <!-- This corresponds to an open appendix. -->
    <max_overpressure unit="PA"> 0.0 </max_overpressure> 
-   <!-- Manual valve coefficient. This is a wild guess. -->
+   <!-- Manual valve coefficient. This is a guess. -->
    <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
 
    <!-- heat exchange with the environment. [lb ft / sec] -->
@@ -282,7 +289,7 @@
  -->
  <ground_reactions>
 
-  <contact type="BOGEY" name="BASKET_LOWER_CENTER">
+  <contact type="STRUCTURE" name="BASKET_LOWER_CENTER">
    <location unit="M">
     <x>  0.0  </x>
     <y>  0.0  </y>
@@ -293,12 +300,9 @@
    <rolling_friction> 1.0 </rolling_friction>
    <spring_coeff unit="N/M"> 25000 </spring_coeff>
    <damping_coeff unit="N/M/SEC"> 5000 </damping_coeff>
-   <max_steer unit="DEG"> 0.0 </max_steer>
-   <brake_group> NONE </brake_group>
-   <retractable>0</retractable>
   </contact>
 
-  <contact type="BOGEY" name="BASKET_LOWER_CORNER_1">
+  <contact type="STRUCTURE" name="BASKET_LOWER_CORNER_1">
    <location unit="M">
     <x> -0.65 </x>
     <y> -0.65 </y>
@@ -309,11 +313,8 @@
    <rolling_friction> 1.0 </rolling_friction>
    <spring_coeff unit="N/M"> 25000 </spring_coeff>
    <damping_coeff unit="N/M/SEC"> 5000 </damping_coeff>
-   <max_steer unit="DEG"> 0.0 </max_steer>
-   <brake_group> NONE </brake_group>
-   <retractable>0</retractable>
   </contact>
-  <contact type="BOGEY" name="BASKET_LOWER_CORNER_2">
+  <contact type="STRUCTURE" name="BASKET_LOWER_CORNER_2">
    <location unit="M">
     <x> -0.65 </x>
     <y>  0.65 </y>
@@ -324,11 +325,8 @@
    <rolling_friction> 1.0 </rolling_friction>
    <spring_coeff unit="N/M"> 25000 </spring_coeff>
    <damping_coeff unit="N/M/SEC"> 5000 </damping_coeff>
-   <max_steer unit="DEG"> 0.0 </max_steer>
-   <brake_group> NONE </brake_group>
-   <retractable>0</retractable>
   </contact>
-  <contact type="BOGEY" name="BASKET_LOWER_CORNER_3">
+  <contact type="STRUCTURE" name="BASKET_LOWER_CORNER_3">
    <location unit="M">
     <x>  0.65 </x>
     <y> -0.65 </y>
@@ -339,11 +337,8 @@
    <rolling_friction> 1.0 </rolling_friction>
    <spring_coeff unit="N/M"> 25000 </spring_coeff>
    <damping_coeff unit="N/M/SEC"> 5000 </damping_coeff>
-   <max_steer unit="DEG"> 0.0 </max_steer>
-   <brake_group> NONE </brake_group>
-   <retractable>0</retractable>
   </contact>
-  <contact type="BOGEY" name="BASKET_LOWER_CORNER_4">
+  <contact type="STRUCTURE" name="BASKET_LOWER_CORNER_4">
    <location unit="M">
     <x> 0.65 </x>
     <y> 0.65 </y>
@@ -354,9 +349,6 @@
    <rolling_friction> 1.0 </rolling_friction>
    <spring_coeff unit="N/M"> 25000 </spring_coeff>
    <damping_coeff unit="N/M/SEC"> 5000 </damping_coeff>
-   <max_steer unit="DEG"> 0.0 </max_steer>
-   <brake_group> NONE </brake_group>
-   <retractable>0</retractable>
   </contact>
 
   <contact type="STRUCTURE" name="BASKET_UPPER_CORNER_1">
@@ -370,9 +362,6 @@
    <rolling_friction> 1.0 </rolling_friction>
    <spring_coeff unit="N/M"> 25000 </spring_coeff>
    <damping_coeff unit="N/M/SEC"> 5000 </damping_coeff>
-   <max_steer unit="DEG"> 0.0 </max_steer>
-   <brake_group> NONE </brake_group>
-   <retractable>0</retractable>
   </contact>
   <contact type="STRUCTURE" name="BASKET_UPPER_CORNER_2">
    <location unit="M">
@@ -385,9 +374,6 @@
    <rolling_friction> 1.0 </rolling_friction>
    <spring_coeff unit="N/M"> 25000 </spring_coeff>
    <damping_coeff unit="N/M/SEC"> 5000 </damping_coeff>
-   <max_steer unit="DEG"> 0.0 </max_steer>
-   <brake_group> NONE </brake_group>
-   <retractable>0</retractable>
   </contact>
   <contact type="STRUCTURE" name="BASKET_UPPER_CORNER_3">
    <location unit="M">
@@ -400,9 +386,6 @@
    <rolling_friction> 1.0 </rolling_friction>
    <spring_coeff unit="N/M"> 25000 </spring_coeff>
    <damping_coeff unit="N/M/SEC"> 5000 </damping_coeff>
-   <max_steer unit="DEG"> 0.0 </max_steer>
-   <brake_group> NONE </brake_group>
-   <retractable>0</retractable>
   </contact>
   <contact type="STRUCTURE" name="BASKET_UPPER_CORNER_4">
    <location unit="M">
@@ -415,9 +398,6 @@
    <rolling_friction> 1.0 </rolling_friction>
    <spring_coeff unit="N/M"> 25000 </spring_coeff>
    <damping_coeff unit="N/M/SEC"> 5000 </damping_coeff>
-   <max_steer unit="DEG"> 0.0 </max_steer>
-   <brake_group> NONE </brake_group>
-   <retractable>0</retractable>
   </contact>
 
   <contact type="STRUCTURE" name="TOP_OF_ENVELOPE">
@@ -431,9 +411,6 @@
    <rolling_friction> 1.0 </rolling_friction>
    <spring_coeff unit="N/M"> 25000 </spring_coeff>
    <damping_coeff unit="N/M/SEC"> 5000 </damping_coeff>
-   <max_steer unit="DEG"> 0.0 </max_steer>
-   <brake_group> NONE </brake_group>
-   <retractable>0</retractable>
   </contact>
 
  </ground_reactions>

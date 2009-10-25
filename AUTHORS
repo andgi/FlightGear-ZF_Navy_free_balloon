@@ -6,9 +6,11 @@ Anders Gidenstam  (anders(at)gidenstam.org)
 The model borrows content from the following authors' contributions
 to FlightGear:
 
+AJ MacLeod
+  - Wicker texture. (From FlightGear/Aircraft/sopwithCamel)
+
 Detlef Faber
   - Pilot 3d model. (From FlightGear/Aircraft/F4U/)
 
 Syd Adams
-  - Radio panel. (From FlightGear/Aircraft/Instruments-3d/ky196/)
   - Template for the Nasal electrical system.

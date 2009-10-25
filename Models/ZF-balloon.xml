@@ -2,8 +2,8 @@
 <!--
   ZF Navy free balloon 3d model.
 
-  Copyright (C) 2006 - 2009  Anders Gidenstam  (anders@gidenstam.org)
-  This file is licensed under the GPL license.
+  Copyright (C) 2006 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
 
@@ -17,15 +17,14 @@
  </offsets>
 
  <!-- 3d instruments -->
-
  <model>
   <name>Instruments</name>
   <path>Aircraft/ZF_Navy_free_balloon/Models/instrument_box.xml</path>
   <offsets>
    <x-m>   0.00 </x-m>
-   <y-m>  -0.35 </y-m>
-   <z-m> -13.50 </z-m>
-   <roll-deg> -15.0 </roll-deg>
+   <y-m>  -0.60 </y-m>
+   <z-m> -14.55 </z-m>
+   <roll-deg> 25.0 </roll-deg>
   </offsets>
  </model>
 
@@ -37,7 +36,7 @@
    <heading-deg>20</heading-deg>
    <x-m>   0.40 </x-m>
    <y-m>   0.30 </y-m>
-   <z-m> -15.515 </z-m>
+   <z-m> -15.415 </z-m>
   </offsets>
  </model>
 
