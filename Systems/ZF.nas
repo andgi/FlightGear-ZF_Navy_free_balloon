@@ -43,6 +43,9 @@ setlistener("/sim/signal/fdm-initialized", func {
     settimer(func { loop(loopid); }, 0.72);
 });
 
+# Disable the autopilot menu.
+gui.menuEnable("autopilot", 0);
+
 ###############################################################################
 # About dialog.
 
@@ -100,7 +103,7 @@ var dialog = {
              "ZF Navy free balloon for FlightGear\n" ~
              "Copyright (C) 2006 - 2010  Anders Gidenstam\n\n" ~
              "FlightGear flight simulator\n" ~
-             "Copyright (C) 1996 - 2009  http://www.flightgear.org\n\n" ~
+             "Copyright (C) 1996 - 2010  http://www.flightgear.org\n\n" ~
              "This is free software, and you are welcome to\n" ~
              "redistribute it under certain conditions.\n" ~
              "See the GNU GENERAL PUBLIC LICENSE Version 2 for the details.",

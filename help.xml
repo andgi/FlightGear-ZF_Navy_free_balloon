@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
-<!-- $Id$ -->
 <!--
   ZR Navy free gas balloon model for FlightGear.
 
-  Copyright (C) 2006 - 2007  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2006 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license.
 -->
 <PropertyList>

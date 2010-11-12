@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!--
+  ZR Navy free gas balloon model for FlightGear.
+
+  Copyright (C) 2006 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<system name="animation">
+
+  <channel name="Envelope animation">
+
+   <fcs_function name="animation/envelope-volume-norm">
+    <function>
+     <quotient>
+      <property>buoyant_forces/gas-cell/volume-ft3</property>
+      <property>buoyant_forces/gas-cell/max_volume-ft3</property>
+     </quotient>
+    </function>
+   </fcs_function>
+
+   <fcs_function name="animation/envelope-width-radius-norm">
+    <function>
+     <max>
+      <quotient>
+       <product>
+        <value> 1.0 </value>
+        <pow>
+         <product>
+          <value> 0.238732414 </value>
+          <property>buoyant_forces/gas-cell/volume-ft3</property>
+         </product>
+         <value> 0.333333333 </value>
+        </pow>
+       </product>
+       <property>buoyant_forces/gas-cell/max-radius-ft</property>
+      </quotient>
+      <value> 0.4 </value>
+     </max>
+    </function>
+    <output>/sim/multiplay/generic/float[2]</output>
+   </fcs_function>
+
+   <fcs_function name="animation/envelope-upper-radius-norm">
+    <function>
+     <min>
+      <value> 1.0 </value>
+      <product>
+       <value> 0.8 </value>
+       <property>animation/envelope-width-radius-norm</property>
+      </product>
+     </min>
+    </function>
+    <output>/sim/multiplay/generic/float[1]</output>
+   </fcs_function>
+
+   <fcs_function name="animation/envelope-lower-radius-norm">
+    <function>
+     <min>
+      <value> 1.0 </value>
+      <product>
+       <value> 1.2 </value>
+       <property>animation/envelope-width-radius-norm</property>
+      </product>
+     </min>
+    </function>
+    <output>/sim/multiplay/generic/float[0]</output>
+   </fcs_function>
+
+   <!--
+     Maximum height of gas column in the envelope.
+     Computed based on the assumption that the envelope radius is constant.
+
+      r = 20.292;  % [ft]
+      h = 0:5:r;   % [ft]
+      V = pi/3.*h.^2.*(3.*r - h)     % [ft^3]
+      h = [r:5:2*r 2*r];             % [ft]
+      V = pi/3.*(3.*h.^2.*r - h.^3)  % [ft^3]
+   -->
+   <fcs_function name="animation/envelope-gas-level-ft">
+    <function>
+     <table>
+      <independentVar lookup="row">buoyant_forces/gas-cell/volume-ft3</independentVar>
+      <tableData>
+       0.0000e+00   0
+       1.4628e+03   5
+       5.3277e+03  10
+       1.0809e+04  15
+       1.7122e+04  20
+       1.7500e+04  20.292
+       2.3837e+04  25.292
+       2.9389e+04  30.292
+       3.3369e+04  35.292
+       3.4994e+04  40.292 
+       3.5000e+04  40.584
+      </tableData>
+     </table>
+    </function>
+    <output>/sim/multiplay/generic/float[3]</output>
+   </fcs_function>
+
+  </channel>
+
+</system>

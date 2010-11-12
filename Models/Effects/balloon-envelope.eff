@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZF Navy free balloon for FlightGear.
+
+  Copyright (C) 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+ <name>Aircraft/ZF_Navy_free_balloon/Models/Effects/balloon-envelope</name>
+ <inherits-from>Effects/model-default</inherits-from>
+ <parameters>
+  <gas-level-ft><use>sim/multiplay/generic/float[3]</use></gas-level-ft>
+ </parameters>
+ <technique n="10">
+  <pass>
+   <program>
+    <vertex-shader>Aircraft/ZF_Navy_free_balloon/Models/Effects/balloon-envelope.vert</vertex-shader>
+    <fragment-shader>Aircraft/ZF_Navy_free_balloon/Models/Effects/balloon-envelope.frag</fragment-shader>
+   </program>
+   <uniform n="1">
+    <name>gas_level_ft</name>
+    <type>float</type>
+    <value type="float"><use>gas-level-ft</use></value>
+   </uniform>
+  </pass>
+ </technique>
+</PropertyList>

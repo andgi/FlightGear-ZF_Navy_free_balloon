@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
-<!-- $Id$ -->
 <!--
   ZF Navy free balloon flight model for JSBSim.
 
-    Copyright (C) 2006 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2006 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -33,7 +32,7 @@
   <email>anders at gidenstam dot org</email>
 
   <filecreationdate> 2006-03-24 </filecreationdate>
-  <version>$Id$</version>
+  <version>$Id: ZF_Navy_free_balloon.xml,v 1.33 2010-11-12 22:27:38 anders Exp $</version>
 
   <license>
    <licenseName>GPL</licenseName>
@@ -451,67 +450,6 @@
    </fcs_function>
   </channel>
 
-  <channel name="Envelope animation">
-
-   <fcs_function name="fcs/envelope-volume-norm">
-    <function>
-     <quotient>
-      <property> buoyant_forces/gas-cell/volume-ft3 </property>
-      <property> buoyant_forces/gas-cell/max_volume-ft3 </property>
-     </quotient>
-    </function>
-   </fcs_function>
-
-   <fcs_function name="fcs/envelope-width-radius-norm">
-    <function>
-     <max>
-      <quotient>
-       <product>
-        <value> 1.0 </value>
-        <pow>
-         <product>
-          <value> 0.238732414 </value>
-          <property> buoyant_forces/gas-cell/volume-ft3 </property>
-         </product>
-         <value> 0.333333333 </value>
-        </pow>
-       </product>
-       <property> buoyant_forces/gas-cell/max-radius-ft </property>
-      </quotient>
-      <value> 0.4 </value>
-     </max>
-    </function>
-    <output>/sim/multiplay/generic/float[2]</output>
-   </fcs_function>
-
-   <fcs_function name="fcs/envelope-upper-radius-norm">
-    <function>
-     <min>
-      <value> 1.0 </value>
-      <product>
-       <value> 0.8 </value>
-       <property> fcs/envelope-width-radius-norm </property>
-      </product>
-     </min>
-    </function>
-    <output>/sim/multiplay/generic/float[1]</output>
-   </fcs_function>
-
-   <fcs_function name="fcs/envelope-lower-radius-norm">
-    <function>
-     <min>
-      <value> 1.0 </value>
-      <product>
-       <value> 1.2 </value>
-       <property> fcs/envelope-width-radius-norm </property>
-      </product>
-     </min>
-    </function>
-    <output>/sim/multiplay/generic/float[0]</output>
-   </fcs_function>
-
-  </channel>
-
   <channel name="Joystick input">
 
    <pure_gain name="Aileron wrapper L">
@@ -540,6 +478,8 @@
   </channel>
 
  </flight_control>
+
+ <system file="animation-jsbsim"/>
 
  <!--
  ==== External reactions ====================================================
@@ -719,30 +659,4 @@
 
  </aerodynamics>
 
-<!--
- <output name="datalog.csv" type="CSV" rate="1">
-  <rates> ON </rates>
-  <velocities> ON </velocities>
-  <forces> ON </forces>
-  <moments> ON </moments>
-  <position> ON </position>
-  <fcs> ON </fcs>
-  <propulsion> OFF </propulsion>
-  <aerosurfaces> ON </aerosurfaces>
-  <fcs> ON </fcs>
-  <ground_reactions> ON </ground_reactions>
-
-  <property> buoyant_forces/gas-cell/valve_open </property>
-  <property> inertia/pointmass-weight-lbs </property>
-  <property> atmosphere/T-R </property>
-  <property> buoyant_forces/gas-cell/max_volume-ft3 </property>
-  <property> buoyant_forces/gas-cell/temp-R </property>
-  <property> buoyant_forces/gas-cell/pressure-psf </property>
-  <property> buoyant_forces/gas-cell/volume-ft3 </property>
-  <property> buoyant_forces/gas-cell/buoyancy-lbs </property>
-  <property> buoyant_forces/gas-cell/contents-mol </property>
-  <property> buoyant_forces/gas-cell/valve_open </property>
-
- </output>
--->
 </fdm_config>
