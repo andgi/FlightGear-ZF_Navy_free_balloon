@@ -39,7 +39,12 @@ void main()
 
     pressureDelta = 0.0;
     //looseness = 0.0;
-    if (oPosition.z < min(0.0, r - h)) {
+    if (oPosition.z < r - h) {
+        if (h < r) {
+            float lxy = length(oPosition.xy);
+            float lmax = max(0.1,r*sqrt(1.0 - ((r-h)/r)*((r-h)/r)));
+            oPosition.xy *= min(1.0,lmax/lxy);
+        }
         float lxy = length(oPosition.xy);
         float nz  = r - (h + pow(1.0 - lxy/r, 5.0)*(2.5*r - h));
         float dlxy = -5.0*(2.5*r - h)/r * pow(1.0 - lxy/r, 4.0); // Derivative map lxy
@@ -47,7 +52,7 @@ void main()
         oNormal.z = sqrt(1.0 - pow(oNormal.x,2.0) - pow(oNormal.y,2.0))/dlxy;
         oNormal = normalize(oNormal);
         
-        oPosition.z = min(0.0, max(nz, oPosition.z));
+        oPosition.z = min(r - h, max(nz, oPosition.z));
         pressureDelta = sqrt(-0.5*(h + oPosition.z - r)/r);
     }
     angle = asin(oNormal.y);
