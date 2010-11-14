@@ -35,7 +35,7 @@ void main()
     vec4 oPosition = gl_Vertex;
     vec3 oNormal   = gl_Normal;
 
-    float h = 0.3048 * gas_level_ft; // [meter]
+    float h = max(1.0, 0.3048 * gas_level_ft); // [meter]
 
     pressureDelta = 0.0;
     //looseness = 0.0;
