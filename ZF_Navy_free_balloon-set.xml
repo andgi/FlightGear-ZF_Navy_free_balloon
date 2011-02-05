@@ -2,7 +2,7 @@
 <!--
   ZF Navy free gas balloon model for FlightGear.
 
-  Copyright (C) 2006 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2006 - 2011  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -12,7 +12,7 @@
   <description>US Navy ZF free gas balloon</description>
   <author>Anders Gidenstam</author>
   <status>development</status>
-  <aircraft-version>$Id: ZF_Navy_free_balloon-set.xml,v 1.24 2010-11-12 22:37:46 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: ZF_Navy_free_balloon-set.xml,v 1.25 2011-02-05 19:03:03 anders Exp $</aircraft-version>
 
   <flight-model>jsb</flight-model>
   <aero>ZF_Navy_free_balloon</aero>
@@ -20,6 +20,9 @@
   <presets>
    <onground>true</onground>
   </presets>
+  <startup>
+   <splash-texture>Aircraft/ZF_Navy_free_balloon/splash.png</splash-texture>
+  </startup>
 
   <sound>
    <audible>false</audible>
