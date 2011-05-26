@@ -11,8 +11,15 @@
 
   <description>US Navy ZF free gas balloon</description>
   <author>Anders Gidenstam</author>
-  <status>development</status>
-  <aircraft-version>$Id: ZF_Navy_free_balloon-set.xml,v 1.25 2011-02-05 19:03:03 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: ZF_Navy_free_balloon-set.xml,v 1.26 2011-05-26 19:03:40 anders Exp $</aircraft-version>
+
+  <status type="string">beta</status>
+  <rating>
+   <FDM type="int">3</FDM>
+   <systems type="int">2</systems>
+   <cockpit type="int">3</cockpit>
+   <model type="int">3</model>
+  </rating>
 
   <flight-model>jsb</flight-model>
   <aero>ZF_Navy_free_balloon</aero>
