@@ -14,3 +14,11 @@ Detlef Faber
 
 Syd Adams
   - Template for the Nasal electrical system.
+
+Dependencies:
+
+Aircraft/Short_Empire (altimeter)
+Aircraft/Spitfire     (clock)
+Aircraft/spitfireIX   (vsi)
+Aircraft/ZLT-NT       (thermometer)
+
