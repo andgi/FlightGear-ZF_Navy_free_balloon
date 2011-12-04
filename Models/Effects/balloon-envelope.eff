@@ -12,6 +12,11 @@
   <gas-level-ft><use>sim/multiplay/generic/float[3]</use></gas-level-ft>
  </parameters>
  <technique n="10">
+  <predicate n="0">
+   <and n="0">
+    <property n="0">/sim/rendering/shaders/aircraft/balloon-envelope/quality-level</property>
+   </and>
+  </predicate>
   <pass>
    <program>
     <vertex-shader n="1">Aircraft/ZF_Navy_free_balloon/Models/Effects/balloon-envelope.vert</vertex-shader>
