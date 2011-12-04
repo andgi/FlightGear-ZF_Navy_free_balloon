@@ -2,20 +2,23 @@
 //  Balloon envelope fragment shader based on Shaders/model-default.frag.
 //
 //  Copyright (C) 2009 - 2010  Tim Moore         (timoore(at)redhat.com)
-//  Copyright (C) 2010         Anders Gidenstam  (anders(at)gidenstam.org)
+//  Copyright (C) 2010 - 2011  Anders Gidenstam  (anders(at)gidenstam.org)
 //  This file is licensed under the GPL license version 2 or later.
+
+#version 120
 
 // Ambient term comes in gl_Color.rgb.
 varying vec4 diffuse_term;
 varying vec3 normal, tangent;
-varying float fogCoord, alpha, pressureDelta, angle;//, loosness;
+varying float alpha, pressureDelta, angle;//, loosness;
 
 uniform sampler2D texture;
 
-float luminance(vec3 color)
-{
-    return dot(vec3(0.212671, 0.715160, 0.072169), color);
-}
+////fog "include" /////
+uniform int fogType;
+
+vec3 fog_Func(vec3 color, int type);
+//////////////////////
 
 void main()
 {
@@ -29,7 +32,7 @@ void main()
     vec4 specular = vec4(0.0);
     n = normalize(normal);
     // Add some normal variation due to wrinkles. 
-    if (pressureDelta > 0) {
+    if (pressureDelta > 0.0) {
         t = normalize(tangent);
         float f = 0.25 * pressureDelta * sin(72.0*angle);
         n = normalize(n + f*t);
@@ -55,6 +58,6 @@ void main()
     color = clamp(color, 0.0, 1.0);
     texel = texture2D(texture, gl_TexCoord[0].st);
     fragColor = color * texel + specular;
-    fogFactor = exp(-gl_Fog.density * gl_Fog.density * fogCoord * fogCoord);
-    gl_FragColor = mix(gl_Fog.color, fragColor, fogFactor);
+
+    gl_FragColor = vec4(fog_Func(fragColor.rgb, fogType), fragColor.a);
 }

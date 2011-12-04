@@ -11,7 +11,7 @@
 
   <description>US Navy ZF free gas balloon</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: ZF_Navy_free_balloon-set.xml,v 1.26 2011-05-26 19:03:40 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: ZF_Navy_free_balloon-set.xml,v 1.28 2011/12/04 15:05:21 anders Exp $</aircraft-version>
 
   <status type="string">beta</status>
   <rating>
@@ -100,6 +100,16 @@
     </menu>
    </default>
   </menubar>
+
+  <rendering>
+   <shaders>
+    <aircraft>
+     <balloon-envelope>
+      <quality-level type="float" userarchive="y">1.0</quality-level>
+     </balloon-envelope>
+    </aircraft>
+   </shaders>
+  </rendering>
  </sim>
 
  <payload>
@@ -226,6 +236,19 @@
    </key>
 
   </keyboard>
+
  </input>
+
+ <instrumentation>
+  <oat-indicator>
+   <serviceable type="bool">1</serviceable>
+   <indicated-oat-degf alias="/fdm/jsbsim/instrumentation/oat-degf"/>
+  </oat-indicator>
+  <superheat-indicator>
+   <serviceable type="bool">1</serviceable>
+   <indicated-superheat-degf
+       alias="/fdm/jsbsim/instrumentation/superheat-degf"/>
+  </superheat-indicator>
+ </instrumentation>
 
 </PropertyList>

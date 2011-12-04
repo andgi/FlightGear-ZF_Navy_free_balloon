@@ -2,7 +2,7 @@
 //  Balloon envelope vertex shader based on Shaders/model-default.vert.
 //
 //  Copyright (C) 2009 - 2010  Tim Moore         (timoore(at)redhat.com)
-//  Copyright (C) 2010         Anders Gidenstam  (anders(at)gidenstam.org)
+//  Copyright (C) 2010 - 2011  Anders Gidenstam  (anders(at)gidenstam.org)
 //  This file is licensed under the GPL license version 2 or later.
 
 // Shader that uses OpenGL state values to do per-pixel lighting
@@ -12,6 +12,8 @@
 //
 // Diffuse colors come from the gl_Color, ambient from the material. This is
 // equivalent to osg::Material::DIFFUSE.
+
+#version 120
 
 #define MODE_OFF 0
 #define MODE_DIFFUSE 1
@@ -26,8 +28,14 @@ const float r = 6.185; // [meter]
 // bugs with gl_FrontFacing in the fragment shader.
 varying vec4 diffuse_term;
 varying vec3 normal, tangent;
-varying float fogCoord, pressureDelta, angle;//, looseness;
+varying float pressureDelta, angle;//, looseness;
 uniform int colorMode;
+
+////fog "include" /////
+uniform int fogType;
+
+vec3 fog_Func(vec3 color, int type);
+//////////////////////
 
 void main()
 {
@@ -64,7 +72,6 @@ void main()
 
     // Default vertex shader below, except that oPosition replaces
     // gl_Vertex and oNormal replaces gl_Normal.
-    vec4 ecPosition = gl_ModelViewMatrix * oPosition;
     gl_Position = gl_ModelViewProjectionMatrix * oPosition;
     gl_TexCoord[0] = gl_TextureMatrix[0] * gl_MultiTexCoord0;
     normal = gl_NormalMatrix * oNormal;
@@ -91,5 +98,4 @@ void main()
     // gl_FrontFacing in the fragment shader.
     gl_FrontColor.rgb = ambient_term.rgb;  gl_FrontColor.a = 1.0;
     //gl_BackColor.rgb = ambient_term.rgb; gl_FrontColor.a = 0.0;
-    fogCoord = abs(ecPosition.z / ecPosition.w);
 }
