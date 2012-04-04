@@ -15,7 +15,7 @@ uniform float gas_level_ft;
 const float r = 6.185; // [meter]
 
 varying vec3 ecNormal;
-varying vec4 color;
+varying float alpha;
 // Balloon envelope specific varyings.
 varying vec3 ecTangent;
 varying float pressureDelta, angle;//, looseness;
@@ -58,5 +58,7 @@ void main() {
     ecNormal = gl_NormalMatrix * oNormal;
     gl_Position = gl_ModelViewProjectionMatrix * oPosition;
     gl_TexCoord[0] = gl_TextureMatrix[0] * gl_MultiTexCoord0;
-    color = gl_Color;
+    gl_FrontColor.rgb = gl_Color.rgb;  gl_FrontColor.a = 1.0;
+    gl_BackColor.rgb = gl_Color.rgb; gl_BackColor.a = 0.0;
+    alpha = gl_Color.a;
 }
