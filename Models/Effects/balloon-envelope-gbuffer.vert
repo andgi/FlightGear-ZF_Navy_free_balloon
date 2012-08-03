@@ -5,10 +5,6 @@
 //  Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
 //  This file is licensed under the GPL license version 2 or later.
 //
-// attachment 0:  normal.x  |  normal.x  |  normal.y  |  normal.y
-// attachment 1: diffuse.r  | diffuse.g  | diffuse.b  | material Id
-// attachment 2: specular.l | shininess  | emission.l |  unused
-//
 
 // Balloon envelope specific constants.
 uniform float gas_level_ft;
