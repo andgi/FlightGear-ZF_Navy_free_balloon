@@ -17,8 +17,8 @@
     <property n="1">/sim/rendering/shaders/aircraft/balloon-envelope/quality-level</property>
    </and>
   </predicate>
-  <pass>
-   <program>
+  <pass n="0">
+   <program n="0">
     <vertex-shader n="0">Aircraft/ZF_Navy_free_balloon/Models/Effects/balloon-envelope-gbuffer.vert</vertex-shader>
     <fragment-shader n="0">Aircraft/ZF_Navy_free_balloon/Models/Effects/balloon-envelope-gbuffer.frag</fragment-shader>
    </program>
@@ -35,8 +35,8 @@
     <property n="0">/sim/rendering/shaders/aircraft/balloon-envelope/quality-level</property>
    </and>
   </predicate>
-  <pass>
-   <program>
+  <pass n="0">
+   <program n="0">
     <vertex-shader n="1">Aircraft/ZF_Navy_free_balloon/Models/Effects/balloon-envelope.vert</vertex-shader>
     <fragment-shader n="1">Aircraft/ZF_Navy_free_balloon/Models/Effects/balloon-envelope.frag</fragment-shader>
    </program>
