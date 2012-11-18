@@ -11,10 +11,28 @@
  <parameters>
   <gas-level-ft><use>sim/multiplay/generic/float[3]</use></gas-level-ft>
  </parameters>
- <technique n="10">
+ <technique n="5"> <!-- Light field a.k.a atmospheric light scattering. -->
   <predicate n="0">
    <and n="0">
-    <property n="1">/sim/rendering/shaders/aircraft/balloon-envelope/quality-level</property>
+    <property n="10">/sim/rendering/shaders/aircraft/balloon-envelope/quality-level</property>
+   </and>
+  </predicate>
+  <pass n="0">
+   <program n="0">
+    <vertex-shader n="0">Aircraft/ZF_Navy_free_balloon/Models/Effects/balloon-envelope-lightfield.vert</vertex-shader>
+    <fragment-shader n="0">Aircraft/ZF_Navy_free_balloon/Models/Effects/balloon-envelope-lightfield.frag</fragment-shader>
+   </program>
+   <uniform n="8">
+    <name>gas_level_ft</name>
+    <type>float</type>
+    <value type="float"><use>gas-level-ft</use></value>
+   </uniform>
+  </pass>
+ </technique>
+ <technique n="10"> <!-- Rembrandt. -->
+  <predicate n="0">
+   <and n="0">
+    <property n="10">/sim/rendering/shaders/aircraft/balloon-envelope/quality-level</property>
    </and>
   </predicate>
   <pass n="0">
@@ -29,10 +47,10 @@
    </uniform>
   </pass>
  </technique>
- <technique n="11">
+ <technique n="11"> <!-- Standard. -->
   <predicate n="0">
    <and n="0">
-    <property n="0">/sim/rendering/shaders/aircraft/balloon-envelope/quality-level</property>
+    <property n="10">/sim/rendering/shaders/aircraft/balloon-envelope/quality-level</property>
    </and>
   </predicate>
   <pass n="0">
