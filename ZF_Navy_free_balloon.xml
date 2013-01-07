@@ -2,7 +2,7 @@
 <!--
   ZF Navy free balloon flight model for JSBSim.
 
-    Copyright (C) 2006 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2006 - 2013  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@
   <email>anders at gidenstam dot org</email>
 
   <filecreationdate> 2006-03-24 </filecreationdate>
-  <version>$Id: ZF_Navy_free_balloon.xml,v 1.33 2010-11-12 22:27:38 anders Exp $</version>
+  <version>$Id: ZF_Navy_free_balloon.xml,v 1.34 2013/01/07 20:42:42 anders Exp $</version>
 
   <license>
    <licenseName>GPL</licenseName>
