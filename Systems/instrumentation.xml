@@ -2,7 +2,7 @@
 <!--
   ZR Navy free gas balloon model for FlightGear.
 
-  Copyright (C) 2006 - 2013  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2006 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -30,5 +30,11 @@
   <number>0</number>
   <static-pressure>/systems/static/pressure-inhg</static-pressure>
  </vertical-speed-indicator>
+
+ <!-- Radio set. Not entirely historic. -->
+ <comm-radio>
+  <name>comm</name>
+  <number>0</number>
+ </comm-radio>
 
 </PropertyList>
