@@ -4,7 +4,7 @@
 //
 //  Copyright (C) 2009 - 2011  Tim Moore         (timoore(at)redhat.com)
 //  Copyright (C) 2011 - 2012  Thorsten Renk
-//  Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+//  Copyright (C) 2012 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
 //  This file is licensed under the GPL license version 2 or later.
 
 // Ambient term comes in gl_Color.rgb.
@@ -103,7 +103,7 @@ void main()
     // Add some normal variation due to wrinkles. 
     if (pressureDelta > 0.0) {
         vec3 t = normalize(tangent);
-        float f = 0.25 * pressureDelta * sin(72.0*angle);
+        float f = 0.25 * pressureDelta * sin(32.0*angle);
         n = normalize(n + f*t);
     }
     // End Balloon specific

@@ -2,7 +2,7 @@
 //  Balloon envelope vertex shader based on Shaders/deferred-gbuffer.vert.
 //
 //  Copyright (C) 2012  Frederic Bouvier  (fredfgfs01(at)free.fr)
-//  Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+//  Copyright (C) 2012 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
 //  This file is licensed under the GPL license version 2 or later.
 //
 
@@ -42,10 +42,10 @@ void main() {
         oPosition.z = min(r - h, max(nz, oPosition.z));
         pressureDelta = sqrt(-0.5*(h + oPosition.z - r)/r);
     }
-    angle = asin(oNormal.y);
 
     // The balloon envelope is assumed to be symetric around the z axis.
     vec2 tmp = normalize(oPosition.xy);
+    angle = asin(tmp.y);
     vec3 oTangent = vec3(-tmp.y, tmp.x, 0);
     ecTangent = gl_NormalMatrix * oTangent;
 
