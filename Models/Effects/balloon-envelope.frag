@@ -2,7 +2,7 @@
 //  Balloon envelope fragment shader based on Shaders/model-default.frag.
 //
 //  Copyright (C) 2009 - 2010  Tim Moore         (timoore(at)redhat.com)
-//  Copyright (C) 2010 - 2011  Anders Gidenstam  (anders(at)gidenstam.org)
+//  Copyright (C) 2010 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
 //  This file is licensed under the GPL license version 2 or later.
 
 #version 120
@@ -34,7 +34,7 @@ void main()
     // Add some normal variation due to wrinkles. 
     if (pressureDelta > 0.0) {
         t = normalize(tangent);
-        float f = 0.25 * pressureDelta * sin(72.0*angle);
+        float f = 0.25 * pressureDelta * sin(32.0*angle);
         n = normalize(n + f*t);
     }
 

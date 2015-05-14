@@ -36,7 +36,7 @@ void main() {
         float nz  = r - (h + pow(1.0 - lxy/r, 5.0)*(2.5*r - h));
         float dlxy = -5.0*(2.5*r - h)/r * pow(1.0 - lxy/r, 4.0); // Derivative map lxy
 
-        oNormal.z = sqrt(1.0 - pow(oNormal.x,2.0) - pow(oNormal.y,2.0))/dlxy;
+        oNormal.z = sqrt(1.0 - dot(oNormal.xy,oNormal.xy))/dlxy;
         oNormal = normalize(oNormal);
         
         oPosition.z = min(r - h, max(nz, oPosition.z));
