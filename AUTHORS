@@ -1,3 +1,7 @@
+ZF Navy free gas balloon model for FlightGear.
+
+This aircraft is licensed under the GPL license version 2 or later.
+
 Anders Gidenstam  (anders(at)gidenstam.org)
   - ZF Navy free balloon FlightGear configuration
   - ZF Navy free balloon Flight Dynamics Model Configuration
@@ -6,8 +10,10 @@ Anders Gidenstam  (anders(at)gidenstam.org)
 The model borrows content from the following authors' contributions
 to FlightGear:
 
-AJ MacLeod
+AJ MacLeod, permission to use instrument photos generously given by
+http://www.spitfirespares.co.uk
   - Wicker texture. (From FlightGear/Aircraft/sopwithCamel)
+  - Altimeter and VSI. (From Aircraft/spitfireIX)
 
 Detlef Faber
   - Pilot 3d model. (From FlightGear/Aircraft/F4U/)
@@ -17,8 +23,6 @@ Syd Adams
 
 Dependencies:
 
-Aircraft/Short_Empire (altimeter)
+Aircraft/Short_Empire (altimeter, VSI)
 Aircraft/Spitfire     (clock)
-Aircraft/spitfireIX   (vsi)
 Aircraft/ZLT-NT       (thermometer)
-
