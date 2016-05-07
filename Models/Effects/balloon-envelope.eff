@@ -2,7 +2,7 @@
 <!--
   ZF Navy free balloon for FlightGear.
 
-  Copyright (C) 2010 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2010 - 2016  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -20,6 +20,7 @@
   <pass n="0">
    <program n="0">
     <vertex-shader n="0">Aircraft/ZF_Navy_free_balloon/Models/Effects/balloon-envelope-lightfield.vert</vertex-shader>
+    <vertex-shader n="1">Aircraft/ZF_Navy_free_balloon/Models/Effects/balloon-envelope-geometry.vert</vertex-shader>
     <fragment-shader n="0">Aircraft/ZF_Navy_free_balloon/Models/Effects/balloon-envelope-lightfield.frag</fragment-shader>
    </program>
    <uniform n="8">
@@ -56,6 +57,7 @@
   <pass n="0">
    <program n="0">
     <vertex-shader n="1">Aircraft/ZF_Navy_free_balloon/Models/Effects/balloon-envelope.vert</vertex-shader>
+    <vertex-shader n="2">Aircraft/ZF_Navy_free_balloon/Models/Effects/balloon-envelope-geometry.vert</vertex-shader>
     <fragment-shader n="1">Aircraft/ZF_Navy_free_balloon/Models/Effects/balloon-envelope.frag</fragment-shader>
    </program>
    <uniform n="1">

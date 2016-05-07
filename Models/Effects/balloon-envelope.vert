@@ -2,7 +2,7 @@
 //  Balloon envelope vertex shader based on Shaders/model-default.vert.
 //
 //  Copyright (C) 2009 - 2010  Tim Moore         (timoore(at)redhat.com)
-//  Copyright (C) 2010 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
+//  Copyright (C) 2010 - 2016  Anders Gidenstam  (anders(at)gidenstam.org)
 //  This file is licensed under the GPL license version 2 or later.
 
 // Shader that uses OpenGL state values to do per-pixel lighting
@@ -19,16 +19,14 @@
 #define MODE_DIFFUSE 1
 #define MODE_AMBIENT_AND_DIFFUSE 2
 
-uniform float gas_level_ft;
-const float r = 6.185; // [meter]
+void balloon_envelope_geometry_func(out vec4 oPosition, out vec3 oNormal);
 
 // The ambient term of the lighting equation that doesn't depend on
 // the surface normal is passed in gl_{Front,Back}Color. The alpha
 // component is set to 1 for front, 0 for back in order to work around
 // bugs with gl_FrontFacing in the fragment shader.
 varying vec4 diffuse_term;
-varying vec3 normal, tangent;
-varying float pressureDelta, angle;//, looseness;
+varying vec3 normal;
 uniform int colorMode;
 
 ////fog "include" /////
@@ -39,36 +37,11 @@ vec3 fog_Func(vec3 color, int type);
 
 void main()
 {
-    // Compute vertex position in object space.
-    vec4 oPosition = gl_Vertex;
-    vec3 oNormal   = gl_Normal;
-
-    float h = max(1.0, 0.3048 * gas_level_ft); // [meter]
-
-    pressureDelta = 0.0;
-    //looseness = 0.0;
-    if (oPosition.z < r - h) {
-        if (h < r) {
-            float lxy = length(oPosition.xy);
-            float lmax = max(0.1,r*sqrt(1.0 - ((r-h)/r)*((r-h)/r)));
-            oPosition.xy *= min(1.0,lmax/lxy);
-        }
-        float lxy = length(oPosition.xy);
-        float nz  = r - (h + pow(1.0 - lxy/r, 5.0)*(2.5*r - h));
-        float dlxy = -5.0*(2.5*r - h)/r * pow(1.0 - lxy/r, 4.0); // Derivative map lxy
-
-        oNormal.z = sqrt(1.0 - dot(oNormal.xy,oNormal.xy))/dlxy;
-        oNormal = normalize(oNormal);
-
-        oPosition.z = min(r - h, max(nz, oPosition.z));
-        pressureDelta = sqrt(-0.5*(h + oPosition.z - r)/r);
-    }
-
-    // The balloon envelope is assumed to be symetric around the z axis.
-    vec2 tmp = normalize(oPosition.xy);
-    angle = asin(tmp.y);
-    vec3 oTangent = vec3(-tmp.y, tmp.x, 0);
-    tangent = gl_NormalMatrix * oTangent;
+    // Balloon specific
+    vec4 oPosition;
+    vec3 oNormal;
+    balloon_envelope_geometry_func(oPosition, oNormal);
+    // End Balloon specific
 
     // Default vertex shader below, except that oPosition replaces
     // gl_Vertex and oNormal replaces gl_Normal.
