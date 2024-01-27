@@ -2,7 +2,7 @@
 <!--
   ZR Navy free gas balloon model for FlightGear.
 
-  Copyright (C) 2006 - 2011  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2006 - 2024  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <system name="animation">
@@ -101,9 +101,9 @@
   </channel>
 
   <channel name="OAT and Superheat Indicator">
-   <documentation>
+   <description>
      Provide outside air temperatur and superheat in degF.
-   </documentation>
+   </description>
 
    <fcs_function name="instrumentation/oat-degf">
     <function>

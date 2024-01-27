@@ -2,7 +2,7 @@
 <!--
   ZF Navy free balloon flight model for JSBSim.
 
-    Copyright (C) 2006 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2006 - 2024  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -31,12 +31,12 @@
   <author>Anders Gidenstam</author>
   <email>anders at gidenstam dot org</email>
 
-  <filecreationdate> 2006-03-24 </filecreationdate>
-  <version>$Id: ZF_Navy_free_balloon.xml,v 1.35 2015/04/15 21:04:47 anders Exp $</version>
+  <filecreationdate>2006-03-24</filecreationdate>
+  <version>2024-01-27</version>
 
   <license>
-   <licenseName>GPL</licenseName>
-   <licenseURL>http://www.gnu.org/licenses/gpl.html</licenseURL>
+   <licenseName>GPL v2+</licenseName>
+   <licenseURL>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html</licenseURL>
   </license>
   <note>
    This model was created using publicly available data, publicly available
@@ -428,7 +428,7 @@
   <!-- CHANNELS -->
   <channel name="Gas">
 
-   <summer name="Gas Valve Sum">
+   <summer name="fcs/gas/valve-cmd-norm">
     <input>fcs/gas-valve-cmd-norm</input>
     <clipto>
      <min>0</min>
@@ -436,10 +436,10 @@
     </clipto>
    </summer>
 
-   <fcs_function name="Gas Valve Control">
+   <fcs_function name="fcs/gas/valve-pos-norm">
     <function>
      <sum>
-      <property>fcs/gas-valve-sum</property>
+      <property>fcs/gas/valve-cmd-norm</property>
       <product>
        <value>5.0</value>
        <property>fcs/rip-cmd-norm</property>
@@ -448,28 +448,34 @@
     </function>
     <output>buoyant_forces/gas-cell/valve_open</output>
    </fcs_function>
+
+   <summer name="static-condition/net-lift-lbs">
+    <input> buoyant_forces/gas-cell[0]/buoyancy-lbs </input>
+    <input> -inertia/weight-lbs </input>
+   </summer>
+
   </channel>
 
   <channel name="Joystick input">
 
-   <pure_gain name="Aileron wrapper L">
+   <pure_gain name="fcs/aileron/left-cmd-norm">
     <input> fcs/aileron-cmd-norm </input>
     <gain> 1 </gain>
     <output> fcs/left-aileron-pos-norm </output>
    </pure_gain>
-   <pure_gain name="Aileron wrapper R">
+   <pure_gain name="fcs/aileron/right-cmd-norm">
     <input> fcs/aileron-cmd-norm </input>
     <gain> -1 </gain>
     <output> fcs/right-aileron-pos-norm </output>
    </pure_gain>
 
-   <pure_gain name="Elevator wrapper">
+   <pure_gain name="fcs/elevator/cmd-norm">
     <input> fcs/elevator-cmd-norm </input>
     <gain> 1 </gain>
     <output> fcs/elevator-pos-norm </output>
    </pure_gain>
 
-   <pure_gain name="Rudder wrapper">
+   <pure_gain name="fcs/rudder/cmd-norm">
     <input> fcs/rudder-cmd-norm </input>
     <gain> 1 </gain>
     <output> fcs/rudder-pos-norm </output>
@@ -524,55 +530,27 @@
    </direction>
   </force>
 
-  <force name="added-mass-pitch[0]" frame="BODY">
-   <location unit="M">
-    <x>  0.0 </x>
-    <y>  0.0 </y>
-    <z> -0.3048 </z>
-   </location>
+  <moment name="added-mass-pitch" frame="BODY" unit="LBSFT">
+   <direction>
+    <x> 0.0 </x>
+    <y> 1.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </moment>
+  <moment name="added-mass-roll" frame="BODY" unit="LBSFT">
    <direction>
     <x> 1.0 </x>
     <y> 0.0 </y>
     <z> 0.0 </z>
    </direction>
-  </force>
-  <force name="added-mass-pitch[1]" frame="BODY">
-   <location unit="M">
-    <x>  0.0 </x>
-    <y>  0.0 </y>
-    <z>  0.3048 </z>
-   </location>
+  </moment>
+  <moment name="added-mass-yaw" frame="BODY" unit="LBSFT">
    <direction>
-    <x> 1.0 </x>
+    <x> 0.0 </x>
     <y> 0.0 </y>
-    <z> 0.0 </z>
+    <z> 1.0 </z>
    </direction>
-  </force>
-
-  <force name="added-mass-yaw[0]" frame="BODY">
-   <location unit="M">
-    <x>  0.0 </x>
-    <y> -0.3048 </y>
-    <z>  0.0 </z>
-   </location>
-   <direction>
-    <x> 1.0 </x>
-    <y> 0.0 </y>
-    <z> 0.0 </z>
-   </direction>
-  </force>
-  <force name="added-mass-yaw[1]" frame="BODY">
-   <location unit="M">
-    <x>  0.0 </x>
-    <y>  0.3048 </y>
-    <z>  0.0 </z>
-   </location>
-   <direction>
-    <x> 1.0 </x>
-    <y> 0.0 </y>
-    <z> 0.0 </z>
-   </direction>
-  </force>
+  </moment>
 
  </external_reactions>
 
@@ -589,9 +567,9 @@
   <property value="1069.99"> aero/constants/volume-ft3_2_3 </property>
 
   <!-- Added mass constants. -->
-  <property value="-0.50"> aero/constants/added-mass/k-axial </property>
-  <property value="-0.50"> aero/constants/added-mass/k-traverse </property>
-  <property value="-0.00"> aero/constants/added-mass/k-rotational </property>
+  <property value="0.50"> aero/constants/added-mass/k-axial </property>
+  <property value="0.50"> aero/constants/added-mass/k-transverse </property>
+  <property value="0.00"> aero/constants/added-mass/k-rotational </property>
   <property value="1.00"> aero/constants/added-mass/tweak-factor </property>
 
  </system>
