@@ -35,6 +35,19 @@
    <set name="inertia/pointmass-weight-lbs[0]" value="-65.0" type="FG_DELTA"/>
   </event>
 
+  <event name="Strong wind from east">
+   <description>Strong wind from east</description>
+   <condition>
+    simulation/sim-time-sec GT 240.0
+   </condition>
+   <notify>
+    <property>static-condition/net-lift-lbs</property>
+   </notify>
+   <!-- Ramp up the wind. -->
+   <set name="atmosphere/wind-east-fps" value="30.0"
+        action="FG_RAMP" tc ="30.0"/>
+  </event>
+
   <event name="Time notify" persistent="true">
    <description>Output message at 5 second intervals</description>
    <notify>
@@ -52,6 +65,8 @@
     <property>buoyant_forces/gas-cell/pressure-psf</property>
     <property>buoyant_forces/gas-cell/volume-ft3</property>
     <property>atmosphere/wind-mag-fps</property>
+    <property>atmosphere/wind-north-fps</property>
+    <property>atmosphere/wind-east-fps</property>
    </notify>
    <condition>
     simulation/sim-time-sec GE simulation/notify-time-trigger
