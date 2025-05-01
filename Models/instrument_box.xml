@@ -2,7 +2,7 @@
 <!--
   ZF Navy free balloon 3d instrument box.
 
-  Copyright (C) 2006 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2006 - 2015, 2025  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -20,7 +20,7 @@
 
  <model>
   <name>Clock</name>
-  <path>Aircraft/Spitfire/Models/clock.xml</path>
+  <path>Aircraft/ZF_Navy_free_balloon/Models/clock.xml</path>
   <offsets>
    <heading-deg>90</heading-deg>
    <x-m>  0.100 </x-m>

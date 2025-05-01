@@ -21,8 +21,10 @@ Detlef Faber
 Syd Adams
   - Template for the Nasal electrical system.
 
+Vivian Meazza
+  - Clock instrument. (From FlightGear/Aircraft/Spitfire/)
+
 Dependencies:
 
 Aircraft/Short_Empire (altimeter, VSI)
-Aircraft/Spitfire     (clock)
 Aircraft/ZLT-NT       (thermometer)
