@@ -11,7 +11,7 @@
 
   <description>US Navy ZF free gas balloon</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>2025-05-01</aircraft-version>
+  <aircraft-version>2025-05-19</aircraft-version>
 
   <long-description>
 This is a US Navy free balloon as used for initial lighter-than-air training during the 1920s to 1940s. It is fairly representative for a type of aircraft that first flew in 1783 and soon afterwards found a shape and construction that it retained (almost) to this day.
@@ -52,6 +52,7 @@ This is a US Navy free balloon as used for initial lighter-than-air training dur
 
   <model>
    <path>Aircraft/ZF_Navy_free_balloon/Models/ZF-balloon.xml</path>
+   <fallback-model-index>702</fallback-model-index>
   </model>
 
   <systems>
